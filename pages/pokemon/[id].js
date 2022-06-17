@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { gql } from '@apollo/client';
 import client from '../../apollo-client';
 import Head from 'next/head';

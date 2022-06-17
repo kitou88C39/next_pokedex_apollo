@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <main>
-      <h1 className={styles.page_title}>Pokemon - First Generation</h1>
+      {/* <h1 className={styles.page_title}>Pokemon - First Generation</h1> */}
       <ol className={styles.pokemon_list}>
         {pokemon.map((pokemon, index) => {
           return (
