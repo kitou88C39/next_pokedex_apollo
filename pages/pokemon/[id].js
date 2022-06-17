@@ -24,7 +24,6 @@ export default function Pokemon({ pokemon, sprite }) {
             );
           })}
         </div>
-
         {/* <h2>Stats</h2>
         <a>
           {pokemon.pokemon_v2_pokemonstats.map((stat) => {
