@@ -1,21 +1,24 @@
 import { gql } from '@apollo/client';
 import client from '../../apollo-client';
 import Head from 'next/head';
-import styles from '../../styles/Pokemon.module.css';
+//import styles from '../../styles/Pokemon.module.css';
+import Link from 'next/link';
 
 export default function Pokemon({ pokemon, sprite }) {
   console.log(pokemon, sprite);
+  const zeroPadding = (num, len) => {
+    // 指定した数値の前に指定した桁数分0を追加したあと、後ろから0桁を返す
+    return (Array(len).join('0') + num).slice(-len);
+  };
   return (
     <>
       <Head>
         <title>{pokemon.name}</title>
       </Head>
       <section className={styles.section}>
-        <h1>
-          {pokemon.name} - ID: {pokemon.id}
-        </h1>
+        <h1>No.{zeroPadding(pokemon.id + 1, 3)}</h1>
         <img className={styles.pokemon_image} src={sprite} alt={pokemon.name} />
-
+        <h2> {pokemon.name}</h2>
         <div>
           {pokemon.pokemon_v2_pokemontypes.map((type) => {
             return (
@@ -23,6 +26,7 @@ export default function Pokemon({ pokemon, sprite }) {
             );
           })}
         </div>
+
         {/* <h2>Stats</h2>
         <a>
           {pokemon.pokemon_v2_pokemonstats.map((stat) => {
@@ -34,6 +38,14 @@ export default function Pokemon({ pokemon, sprite }) {
           })}
         </a> */}
       </section>
+      {/* <p className='mt-10 text-center'> */}
+      <Link href='/'>
+        <a>
+          {/* <button className='focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-blue-500 hover:bg-blue-700 hover:shadow-lg'> */}
+          <button class='button'>一覧に戻る</button>
+        </a>
+      </Link>
+      {/* </p> */}
     </>
   );
 }
