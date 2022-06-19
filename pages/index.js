@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import client from "../apollo-client";
+import gql from "graphql-tag";
 //import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -13,14 +15,23 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon/?limit=150')
-      .then((res) => res.json())
-      .then((data) => {
-        setPokemon(data.results);
-        setPokemonName(data.results.map((pokemon) => pokemon.name));
-        setPokemonId(data.results.map((pokemon) => pokemon.url.split('/')[6]));
-        console.log(data.results);
-      });
+    client
+    .query({
+      query: gql`
+        query GetPokemons {
+          pokemon_v2_pokemon(limit: 150) {
+            id
+            name
+          }
+        }
+      `
+    })
+    .then(result => {
+      setPokemon(result.data.pokemon_v2_pokemon);
+      setPokemonName(result.data.pokemon_v2_pokemon.map((pokemon) => pokemon.name));
+      setPokemonId(result.data.pokemon_v2_pokemon.map((pokemon) => pokemon.id));
+      console.log(result.data);
+    })
   }, []);
 
   return (
