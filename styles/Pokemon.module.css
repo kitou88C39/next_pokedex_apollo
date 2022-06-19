@@ -1,4 +1,4 @@
-.section {
+/* .section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,6 +6,14 @@
 }
 
 .pokemon_image {
-  background-color: lightsteelblue;
-  border-radius: 50%;
+  background-color: white;
 }
+body .button {
+  color: #fff;
+  background: green;
+  padding: 10px 30px;
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+} */
