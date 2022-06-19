@@ -15,9 +15,10 @@ export default function Pokemon({ pokemon, sprite }) {
       <Head>
         <title>{pokemon.name}</title>
       </Head>
-      <section className={styles.section}>
+      {/* <section className={styles.section}> */}
+      <section>
         <h1>No.{zeroPadding(pokemon.id + 1, 3)}</h1>
-        <img className={styles.pokemon_image} src={sprite} alt={pokemon.name} />
+        <img className={pokemon_image} src={sprite} alt={pokemon.name} />
         <h2> {pokemon.name}</h2>
         <div>
           {pokemon.pokemon_v2_pokemontypes.map((type) => {
@@ -26,23 +27,13 @@ export default function Pokemon({ pokemon, sprite }) {
             );
           })}
         </div>
-
-        {/* <h2>Stats</h2>
-        <a>
-          {pokemon.pokemon_v2_pokemonstats.map((stat) => {
-            return (
-              <li key={stat.pokemon_v2_stat.name}>
-                {stat.pokemon_v2_stat.name}: {stat.base_stat}
-              </li>
-            );
-          })}
-        </a> */}
       </section>
       {/* <p className='mt-10 text-center'> */}
       <Link href='/'>
         <a>
-          {/* <button className='focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-blue-500 hover:bg-blue-700 hover:shadow-lg'> */}
-          <button class='button'>一覧に戻る</button>
+          <button className='focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-blue-500 hover:bg-blue-700 hover:shadow-lg'>
+            一覧に戻る
+          </button>
         </a>
       </Link>
       {/* </p> */}
