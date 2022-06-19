@@ -16,14 +16,18 @@ export default function Pokemon({ pokemon, sprite }) {
         <title>{pokemon.name}</title>
       </Head>
       {/* <section className={styles.section}> */}
-      <main className='container mx-auto px-4 max-w-3xl mt-20 pt-8 min-h-0 shadow-lg'>
-        <div className='flex flex-col items-center justify-center mt-20'>
-          <section>
+      <main className='container mx-auto px-4 max-w-3xl mt-20 pt-8'>
+        <section
+          // aspect-squareで縦横比を1:1に固定
+          // 正方形のサイズはmargin(mx-20)で調整する
+          className='flex flex-col items-center justify-center aspect-square shadow-lg mx-20'
+        >
             <h1 className='ml-2 font-light'>
               No.{zeroPadding(pokemon.id + 1, 3)}
             </h1>
             <img
-              className={styles.pokemon_image}
+              // サイズを引き伸ばす
+              className={'w-56 h-56'}
               src={sprite}
               alt={pokemon.name}
             />
@@ -40,18 +44,17 @@ export default function Pokemon({ pokemon, sprite }) {
                 );
               })}
             </div>
-          </section>
-        </div>
+        </section>
+        <p className='mt-10 text-center'>
+          <Link href='/'>
+            <a>
+              <button className='focus:outline-none text-white text-sm py-2.5 px-2 rounded-md bg-blue-500 hover:bg-blue-700 hover:shadow-lg'>
+                一覧に戻る
+              </button>
+            </a>
+          </Link>
+        </p>
       </main>
-      <p className='mt-10 text-center'>
-        <Link href='/'>
-          <a>
-            <button className='focus:outline-none text-white text-sm py-2.5 px-2 rounded-md bg-blue-500 hover:bg-blue-700 hover:shadow-lg'>
-              一覧に戻る
-            </button>
-          </a>
-        </Link>
-      </p>
     </>
   );
 }
